@@ -11,8 +11,8 @@ class Economy(models.Model):
 # Create your models here.
 class Transaction(models.Model):
     instance_id = models.IntegerField(default=0)
-    transationType = models.CharField(max_length=10)
-    currency = models.CharField(max_length=20)
+    transationType = models.CharField(max_length=10, default='buy')
+    currency = models.CharField(max_length=20, default='INR')
     time = models.DateTimeField('Time')
     money = models.DecimalField(default=0,max_digits=7, decimal_places=4)
     rate = models.DecimalField(max_digits=7, decimal_places=7, blank=True, null=True)

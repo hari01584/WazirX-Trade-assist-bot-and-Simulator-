@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
+    'wzxt_bgworker.apps.WzxtBgworkerConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
