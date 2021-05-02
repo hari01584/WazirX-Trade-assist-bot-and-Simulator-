@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
-from dashboard.models import Transaction
+from wzxt_bgworker.models import Transaction
+from wzxt_bgworker.views import doTrans
 
 class Command(BaseCommand):
     help = 'Update data and invest in stocks!!'
@@ -10,3 +11,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         instance_id = options["instance_id"]
         self.stdout.write(self.style.SUCCESS('Started fetching for data! instance %d')%(instance_id,))
+        doTrans(instance_id)

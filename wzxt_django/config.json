@@ -1,0 +1,8 @@
+{
+    "enableMain": true,
+    "enableV1": false,
+    "enableV2": false,
+    "strategy_to_use": "01_basic_template.py",
+    "bob": 5,
+    "token": "token"
+}
