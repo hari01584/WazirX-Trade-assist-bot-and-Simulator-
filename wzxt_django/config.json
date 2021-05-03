@@ -1,8 +1,19 @@
 {
     "enableMain": true,
     "enableV1": false,
-    "enableV2": false,
-    "strategy_to_use": "01_basic_template.py",
-    "bob": 5,
+    "baseCurrency": "INR",
+    "requiredAPI": [
+        "getMarketStatus",
+        "getMarketTicker",
+        "",
+        ""
+    ],
+    "strategy_to_use": [
+        {
+            "name": "Basic Template",
+            "isSimulation": false,
+            "file": "01_basic_template.py"
+        }
+    ],
     "token": "token"
 }

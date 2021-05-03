@@ -25,6 +25,25 @@ class WZXAPI(object):
         self.apiKey = apiKey
         self.secret = secret
 
+
+    # Get multiple api data in dictionary form, useful for multi loading
+    def getMultipleApiData(self, requiredAPIs):
+        data = {}
+        if("getMarketStatus" in requiredAPIs):
+            data["getMarketStatus"] = self.getMarketStatus()
+
+        if("getMarketTicker" in requiredAPIs):
+            data["getMarketTicker"] = self.getMarketTicker()
+
+        if("getMarketDepth" in requiredAPIs):
+            data["getMarketDepth"] = self.getMarketDepth()
+
+        if("getMarketTradeHistory" in requiredAPIs):
+            data["getMarketTradeHistory"] = self.getMarketStatus()
+
+        return data
+
+
     # Function getMarketStatus, Returns A Nested dictionary comprising of the API Results, You can print to see the data
     # Or optionally check the API output from original wazirx api repo (ref. https://github.com/WazirX/wazirx-api)
     def getMarketStatus(self):

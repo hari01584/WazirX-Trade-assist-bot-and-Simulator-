@@ -8,15 +8,20 @@ import os.path
 class MyConfig:
     # Basic template for your config, this will be created if config file not found
     config = {
-      "enableMain": True,
-      "enableV1": False,
-      "enableV2": False,
-      "strategy_to_use": "01_basic_template.py",
-      "strategy_to_useV1": "01_basic_template.py",
-      "strategy_to_useV2": "01_basic_template.py",
-      "bob": 5,
-      "token": "token"
+        "enableMain": True,
+        "enableV1": False,
+        "baseCurrency": "INR",
+        "requiredAPI": ["getMarketStatus","getMarketTicker","",""],
+        "strategy_to_use": [
+            {
+                "name": "Basic Template",
+                "isSimulation": False,
+                "file": "01_basic_template.py"
+            }
+        ],
+        "token": "token"
     }
+
 
     # Initialize for a file name, note: if given a simple name like abc.xyz, then it will create/look for sample folder
     # ie current dir/root, optionally you can also provide full path of your configs (Not recommended)
@@ -39,5 +44,15 @@ class MyConfig:
     # Get a specfic setting/config in the file, Good to use, just some boilerplate code tho :D
     def getStrategyFile(self):
         return self.config["strategy_to_use"]
+
+    # List out all apis required for all scripts, ie preload all data before sending and executing logic
+    def getApiRequired(self):
+        return self.config["requiredAPI"]
+
+
+    # Get base currency of user in which all transactions is to be made
+    def getBaseCurrency(self):
+        return self.config["baseCurrency"]
+
 
 myConfig = MyConfig('config.json')

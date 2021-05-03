@@ -1,7 +1,7 @@
 from django.db import models
 
 class Economy(models.Model):
-    instance_id = models.IntegerField(default=0)
+    instance_name = models.CharField(max_length=20, default='INS0')
     currencyBase = models.CharField(max_length=20)
     amount = models.DecimalField(default=0,max_digits=7, decimal_places=3)
 
@@ -10,12 +10,12 @@ class Economy(models.Model):
 
 # Create your models here.
 class Transaction(models.Model):
-    instance_id = models.IntegerField(default=0)
+    instance_name = models.CharField(max_length=20, default='INS0')
     transationType = models.CharField(max_length=10, default='buy')
-    currency = models.CharField(max_length=20, default='INR')
+    currency = models.CharField(max_length=20, default='BTC')
     time = models.DateTimeField('Time')
-    money = models.DecimalField(default=0,max_digits=7, decimal_places=4)
-    rate = models.DecimalField(max_digits=7, decimal_places=7, blank=True, null=True)
+    money = models.DecimalField(default=0, max_digits=7, decimal_places=4)
+    rate = models.DecimalField(default=0, max_digits=7, decimal_places=5)
 
     def __str__(self):
         return self.currency+"%"+ time +"%"+ money +"%"+ rate +"%"
