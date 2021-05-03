@@ -49,7 +49,6 @@ class MyConfig:
     def getApiRequired(self):
         return self.config["requiredAPI"]
 
-
     # Get base currency of user in which all transactions is to be made
     def getBaseCurrency(self):
         return self.config["baseCurrency"]

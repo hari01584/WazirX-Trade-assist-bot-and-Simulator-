@@ -2,8 +2,16 @@ from wzxt_bgworker.configManager import myConfig
 from importlib import import_module
 from wzxt_bgworker.API import WZXAPI
 from wzxt_bgworker.models import Transaction
+from wzxt_bgworker.models import Economy
 from decimal import Decimal
 import datetime
+
+def moneyWallet(ins_name):
+    try:
+        me = Economy.objects.get(instance_name=ins_name)
+        return me
+    except Exception as e:
+        raise OperationError("Error, base money not set for instance "+ins_name)
 
 def liveline():
     api = WZXAPI()
@@ -14,10 +22,14 @@ def liveline():
 
     for strategy in all_strategies:
         name = strategy["name"]
+        wallet = moneyWallet(name)
         isSim = strategy["isSimulation"]
+        extras = {}
+        if("extras" in strategy):
+            extras = strategy["extras"]
 
         cls = getattr(import_module('strategies.'+strategy["file"][:-3]), 'strategy')
-        stra = cls(data, name, isSim, bCurren)
+        stra = cls(data, name, isSim, bCurren, wallet.amount, extras)
         for action in stra.execute():
             processAction(action, name, isSim, bCurren)
 
