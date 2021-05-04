@@ -35,16 +35,17 @@ def liveline():
 
 
 def processAction(action, name, isSim, bCurren):
-    print("Name %s, Action Type:%s, isSimulated:%d"%(name,action["type"],isSim))
-    if(action["type"] == "buy"):
-        transc = Transaction()
-        transc.instance_name = name
-        transc.transationType = "buy"
-        transc.currency = action["targetCurrency"]
-        transc.time = datetime.datetime.now()
-        transc.money = Decimal(200.0)
-        transc.rate = Decimal(2.1244)
-        transc.save()
+    if(isSim):
+        if(action["side"] == "buy"):
+            transc = Transaction()
+            transc.instance_name = name
+            transc.transationType = "buy"
+            transc.currency = action["market"]
+            transc.time = datetime.datetime.now()
+            transc.volume = Decimal(action["volume"])
+            print("processing", transc.currency, type(action["price"]), action["price"])
+            transc.rate = Decimal(action["price"])
+            transc.save()
 
 
 class OperationError(Exception):

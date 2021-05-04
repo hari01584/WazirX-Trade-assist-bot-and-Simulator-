@@ -3,16 +3,17 @@
     "enableV1": false,
     "baseCurrency": "INR",
     "requiredAPI": [
-        "getMarketStatus",
+        "",
         "getMarketTicker",
         "",
         ""
     ],
     "strategy_to_use": [
         {
-            "name": "Basic Template",
-            "isSimulation": false,
-            "file": "01_basic_template.py"
+            "name": "Reverse Loss",
+            "isSimulation": true,
+            "file": "reverse_loss_model.py",
+            "extras": { "targetMarket": ["btcinr", "dogeinr", "ethinr", "wrxinr", "chrinr"] }
         }
     ],
     "token": "token"

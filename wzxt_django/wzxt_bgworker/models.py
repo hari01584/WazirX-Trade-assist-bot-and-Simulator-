@@ -6,7 +6,7 @@ class Economy(models.Model):
     amount = models.DecimalField(default=0,max_digits=7, decimal_places=3)
 
     def __str__(self):
-        return "Economy:" + self.instance_id+"%"+ self.currencyBase +"%"+ self.amount
+        return "Economy:" + self.instance_name+"%"+ str(self.currencyBase) +"%"+ str(self.amount)
 
 # Create your models here.
 class Transaction(models.Model):
@@ -14,8 +14,8 @@ class Transaction(models.Model):
     transationType = models.CharField(max_length=10, default='buy')
     currency = models.CharField(max_length=20, default='BTC')
     time = models.DateTimeField('Time')
-    money = models.DecimalField(default=0, max_digits=7, decimal_places=4)
-    rate = models.DecimalField(default=0, max_digits=7, decimal_places=5)
+    volume = models.DecimalField(default=0.0, max_digits=12, decimal_places=5)
+    rate = models.DecimalField(default=0.0, max_digits=12, decimal_places=5)
 
     def __str__(self):
         return self.currency+"%"+ time +"%"+ money +"%"+ rate +"%"

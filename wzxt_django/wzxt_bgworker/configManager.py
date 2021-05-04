@@ -11,7 +11,7 @@ class MyConfig:
         "enableMain": True,
         "enableV1": False,
         "baseCurrency": "INR",
-        "requiredAPI": ["getMarketStatus","getMarketTicker","",""],
+        "requiredAPI": ["","getMarketTicker","",""],
         "strategy_to_use": [
             {
                 "name": "Basic Template",

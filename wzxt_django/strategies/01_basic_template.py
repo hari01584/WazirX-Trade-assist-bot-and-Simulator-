@@ -29,7 +29,6 @@ class strategy:
         self.baseCurrencyAmt = baseCurrencyAmt
         self.extras = extras
 
-
         # Parse the extras (if sending any) here, and set custom variables from extras here! Useful for many stuff
         # ie you can set a custom config variable which set amount of total money be used for each transaction which
         # Should be user provided, so you can set a variable from parsing extras, which is supposely fed from config!
