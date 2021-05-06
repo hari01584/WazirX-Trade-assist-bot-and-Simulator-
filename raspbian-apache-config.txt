@@ -1,0 +1,15 @@
+  Alias /static /home/pi/Desktop/xWazir/wzxt_django
+    <Directory /home/pi/Desktop/xWazir/wzxt_django>
+        Require all granted
+    </Directory>
+
+    <Directory /home/pi/Desktop/xWazir/wzxt_django/wzxt>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    WSGIDaemonProcess project python-path=/home/pi/Desktop/xWazir/wzxt_django/ python-home=/home/pi/Desktop/xWazir/create/
+
+    WSGIScriptAlias / /home/pi/Desktop/xWazir/wzxt_django/wzxt/wsgi.py \
+	process-group=project application-group=%{GLOBAL}
